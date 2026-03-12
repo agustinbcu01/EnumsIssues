@@ -19,7 +19,7 @@ namespace EnumsIssues.Services
 
     public int Create(UserModel model)
     {
-      _context.Users.Add(model.CreateIntity());
+      _context.User.Add(model.CreateIntity());
       _context.SaveChanges();
       return model.Id;
     }
@@ -27,7 +27,7 @@ namespace EnumsIssues.Services
     public UserModel[] GetAllActive()
     {
       
-      return _context.Users.Where(x => x.Status == StatusEnum.Active).Select(x => new UserModel(x)).ToArray();
+      return _context.User.Where(x => x.Status == StatusEnum.Active).Select(x => new UserModel(x)).ToArray();
       
     }
   }
