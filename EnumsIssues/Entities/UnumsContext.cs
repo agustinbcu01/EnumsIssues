@@ -5,7 +5,7 @@ namespace EnumsIssues.Entities
 {
   public partial class UnumsContext : DbContext
   {
-   // public virtual DbSet<User> User { get; set; }
+    public virtual DbSet<User> User { get; set; }
 
     public  UnumsContext(DbContextOptions<UnumsContext> options)
         : base(options)
