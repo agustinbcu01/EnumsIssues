@@ -15,7 +15,7 @@ namespace EnumsIssues.Infraestructute
       services.AddSingleton(provider =>
       {
         var builder = new NpgsqlDataSourceBuilder(connectionStr);
-        builder.MapEnum<StatusEnum>("public.StatusEnum");
+        builder.MapEnum<StatusEnum>("public.status_enum");
         return builder.Build();
       });
 

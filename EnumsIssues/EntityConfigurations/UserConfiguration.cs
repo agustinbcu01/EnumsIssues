@@ -30,7 +30,7 @@ namespace EnumsIssues.EntityConfigurations
 
       builder.Property(e => e.Status)
         .IsRequired()
-        .HasColumnType("public.StatusEnum");
+        .HasColumnType("public.status_enum");
 
       builder.HasData(InternalUser);
     }

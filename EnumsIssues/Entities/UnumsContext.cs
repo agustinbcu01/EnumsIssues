@@ -5,7 +5,12 @@ namespace EnumsIssues.Entities
 {
   public partial class UnumsContext : DbContext
   {
-    public virtual DbSet<User> User { get; set; }
+   // public virtual DbSet<User> User { get; set; }
+
+    public  UnumsContext(DbContextOptions<UnumsContext> options)
+        : base(options)
+    {
+    }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -18,7 +23,7 @@ namespace EnumsIssues.Entities
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
       modelBuilder
-         .HasPostgresEnum("public", "StatusEnum", new[] { "none", "active", "inactive", "deleted", "pending_of_approval" });
+         .HasPostgresEnum("public", "status_enum", new[] { "none", "active", "inactive", "deleted", "pending_of_approval" });
 
       modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
     }
