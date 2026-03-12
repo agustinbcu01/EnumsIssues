@@ -9,4 +9,7 @@ migrations scripts
 
 [Migration script .net10](https://github.com/agustinbcu01/EnumsIssues/blob/dot-net-10/EnumsIssues/all-migrations.sql)
 
-
+Also this call fail
+'''c#
+ return _context.User.Where(x => x.Status == StatusEnum.Active).Select(x => new UserModel(x)).ToArray();
+ '''
