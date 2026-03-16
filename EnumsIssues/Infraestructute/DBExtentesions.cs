@@ -25,7 +25,9 @@ namespace EnumsIssues.Infraestructute
 
           options.UseNpgsql(dataSource, npgsqlOptions =>
           {
+            npgsqlOptions.MapEnum<StatusEnum>("status_enum", "public");
             npgsqlOptions.EnableRetryOnFailure();
+
           });
         });
       return services;

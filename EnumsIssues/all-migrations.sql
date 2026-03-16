@@ -31,9 +31,9 @@ DO $EF$
 BEGIN
     IF NOT EXISTS(SELECT 1 FROM "__EFMigrationsHistory" WHERE "MigrationId" = '20260312183326_init') THEN
     INSERT INTO public.users ("Id", "Email", "Name", "PasswordHash", "Status")
-    VALUES (1, 'admin@local.t', 'admin', '##########', Active);
+    VALUES (1, 'admin@local.t', 'admin', '##########', 'active'::public.status_enum);
     INSERT INTO public.users ("Id", "Email", "Name", "PasswordHash", "Status")
-    VALUES (2, 'guest@local.t', 'guest', '##########', Inactive);
+    VALUES (2, 'guest@local.t', 'guest', '##########', 'inactive'::public.status_enum);
     END IF;
 END $EF$;
 
@@ -54,6 +54,17 @@ BEGIN
     IF NOT EXISTS(SELECT 1 FROM "__EFMigrationsHistory" WHERE "MigrationId" = '20260312183326_init') THEN
     INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
     VALUES ('20260312183326_init', '10.0.5');
+    END IF;
+END $EF$;
+COMMIT;
+
+START TRANSACTION;
+
+DO $EF$
+BEGIN
+    IF NOT EXISTS(SELECT 1 FROM "__EFMigrationsHistory" WHERE "MigrationId" = '20260316143455_FixDot10') THEN
+    INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+    VALUES ('20260316143455_FixDot10', '10.0.5');
     END IF;
 END $EF$;
 COMMIT;
